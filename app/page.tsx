@@ -1,22 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { Copy, Check, MapPin, AlertTriangle, ExternalLink } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { MapPin, AlertTriangle, ExternalLink } from "lucide-react";
 
 export default function Home() {
-  const [copied, setCopied] = useState(false);
   const link = "https://surl.amap.com/1k287IY21ke3H";
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(link);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy text: ", err);
-    }
-  };
 
   return (
     <main className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
@@ -78,30 +65,10 @@ export default function Home() {
                 点击左下角分享按钮后，向左滑动找到“复制链接”选项，再返回到表格，粘贴链接。
               </p>
               
-              {/* Link Copy Area */}
-              <div className="mt-2 p-3 bg-gray-100 rounded-md flex items-center justify-between">
-                <code className="text-xs text-gray-800 break-all mr-2">{link}</code>
-                <button
-                  onClick={handleCopy}
-                  className={cn(
-                    "flex-shrink-0 inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors",
-                    copied
-                      ? "bg-green-100 text-green-800 hover:bg-green-200 focus:ring-green-500"
-                      : "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
-                  )}
-                >
-                  {copied ? (
-                    <>
-                      <Check className="h-3 w-3 mr-1" />
-                      已复制
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="h-3 w-3 mr-1" />
-                      复制
-                    </>
-                  )}
-                </button>
+              {/* Link Example Area */}
+              <div className="mt-2 p-3 bg-gray-100 rounded-md">
+                <span className="text-xs text-gray-500 block mb-1">链接示例：</span>
+                <code className="text-xs text-gray-800 break-all">{link}</code>
               </div>
 
               {/* Image Step 2 */}
@@ -117,7 +84,7 @@ export default function Home() {
             <div className="px-4 py-5 sm:p-6">
                 <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">视频教程</h3>
                 <a 
-                    href="https://go.plvideo.cn/front/video/view?vid=zdceb3cb56666b8c8e904a29048c4403_" 
+                    href="https://share.plvideo.cn/front/video/view?vid=zdceb3cb56666b8c8e904a29048c4403_z" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-full p-4 border-2 border-dashed border-blue-300 bg-blue-50 rounded-lg text-blue-600 hover:bg-blue-100 transition-colors"
